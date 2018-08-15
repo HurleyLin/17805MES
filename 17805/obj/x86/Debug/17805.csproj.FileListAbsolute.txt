@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\17805\17805\obj\x86\Debug\_17805.Form1.resources
+C:\Users\Administrator\Desktop\17805\17805\obj\x86\Debug\_17805.Properties.Resources.resources
+C:\Users\Administrator\Desktop\17805\17805\obj\x86\Debug\17805.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\17805\17805\bin\Debug\17805.exe
+C:\Users\Administrator\Desktop\17805\17805\bin\Debug\17805.pdb
+C:\Users\Administrator\Desktop\17805\17805\obj\x86\Debug\17805.exe
+C:\Users\Administrator\Desktop\17805\17805\obj\x86\Debug\17805.pdb
+C:\Users\Administrator\Desktop\17805\17805\bin\Debug\17805.exe.config
