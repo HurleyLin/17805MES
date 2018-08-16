@@ -77,6 +77,7 @@ namespace _17805
             {
                 labelTips.Text = "登录成功";
                 labelTips.ForeColor = Color.Red;
+                //labelTips.ForeCllor = Color.FromArgb(250, 250, 0, 0);
             }
              * */
         }
@@ -181,6 +182,7 @@ namespace _17805
                 //创建一个通信线程    
                 ParameterizedThreadStart pts = new ParameterizedThreadStart(recv);
                 Thread thread = new Thread(pts);
+                //Thread thread = new Thread(recv);
                 thread.IsBackground = true;//设置为后台线程，随着主线程退出而退出   
                 //启动线程   
                 thread.Start(connection);
@@ -239,7 +241,16 @@ namespace _17805
             //定位key的位置
             int temp = str.LastIndexOf(key);
 
-            string tempstr = str.Remove(0,temp-1);
+            string tempstr;
+            if (temp > 0)
+            {
+                tempstr = str.Remove(0, temp - 1);
+            }
+            else
+            {
+                tempstr = str;
+            }
+            
 
             //分割字符串
             string[] s = tempstr.Split(new char[1]{'\n'});
@@ -269,34 +280,34 @@ namespace _17805
             this.Dispose();
         }
 
-        string temperature = "";
-        string codec1 = "";
-        string gsensorX = "";
-        string gsensorY = "";
-        string gsensorZ = "";
-        string SD = "";
-        string udisk = "";
-        string MES_lock = "";
-        string alarm_led = "";
-        string rec_led = "";
-        string sd1_led = "";
-        string sd2_led = "";
-        string SIM_status = "";
-        string dial = "";
-        string gps = "";
-        string wifi = "";
-        string camera1 = "";
-        string camera2 = "";
-        string camera3 = "";
-        string camera4 = "";
-        string camera5 = "";
-        string camera6 = "";
-        string IO_backoff = "";
-        string IO_turnleft = "";
-        string IO_turnright = "";
-        string IO_alarmIn1 = "";
-        string IO_alarmIn2 = "";
-        string IO_alarmIn4 = "";
+        string temperature = null;
+        string codec1 = null;
+        string gsensorX = null;
+        string gsensorY = null;
+        string gsensorZ = null;
+        string SD = null;
+        string udisk = null;
+        string MES_lock = null;
+        string alarm_led = null;
+        string rec_led = null;
+        string sd1_led = null;
+        string sd2_led = null;
+        string SIM_status = null;
+        string dial = null;
+        string gps = null;
+        string wifi = null;
+        string camera1 = null;
+        string camera2 = null;
+        string camera3 = null;
+        string camera4 = null;
+        string camera5 = null;
+        string camera6 = null;
+        string IO_backoff = null;
+        string IO_turnleft = null;
+        string IO_turnright = null;
+        string IO_alarmIn1 = null;
+        string IO_alarmIn2 = null;
+        string IO_alarmIn4 = null;
 
         public void setnull()
         {
@@ -332,7 +343,7 @@ namespace _17805
         //获取测试结果
         public bool getresult()
         {
-            string result = textBox_Result.Text;
+            string result = "测试结果：\r\n"+textBox_Result.Text;
             if (result == "")
             {
                 labelTips.Text = "请先进行测试!";
@@ -686,7 +697,7 @@ namespace _17805
         }
         private void button_upload_Click(object sender, EventArgs e)
         {
-            resulttest = "";
+            resulttest = "测试结果：\r\n";
 
             labelTips.Text = "";
             string ErrMessage;
@@ -703,6 +714,7 @@ namespace _17805
             {
                 return;
             }
+            
 
             BenQGuru.eMES.DLLService.MESHelper temp = new BenQGuru.eMES.DLLService.MESHelper();
 
