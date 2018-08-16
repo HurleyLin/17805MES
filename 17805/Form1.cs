@@ -269,34 +269,66 @@ namespace _17805
             this.Dispose();
         }
 
-        string codec1 = null;
-        string gsensorX = null;
-        string gsensorY = null;
-        string gsensorZ = null;
-        string SD = null;
-        string udisk = null;
-        string MES_lock = null;
-        string alarm_led = null;
-        string rec_led = null;
-        string sd1_led = null;
-        string sd2_led = null;
-        string SIM_status = null;
-        string dial = null;
-        string gps = null;
-        string wifi = null;
-        string camera1 = null;
-        string camera2 = null;
-        string camera3 = null;
-        string camera4 = null;
-        string camera5 = null;
-        string camera6 = null;
-        string IO_backoff = null;
-        string IO_turnleft = null;
-        string IO_turnright = null;
-        string IO_alarmIn1 = null;
-        string IO_alarmIn2 = null;
-        string IO_alarmIn4 = null;
-        
+        string temperature = "";
+        string codec1 = "";
+        string gsensorX = "";
+        string gsensorY = "";
+        string gsensorZ = "";
+        string SD = "";
+        string udisk = "";
+        string MES_lock = "";
+        string alarm_led = "";
+        string rec_led = "";
+        string sd1_led = "";
+        string sd2_led = "";
+        string SIM_status = "";
+        string dial = "";
+        string gps = "";
+        string wifi = "";
+        string camera1 = "";
+        string camera2 = "";
+        string camera3 = "";
+        string camera4 = "";
+        string camera5 = "";
+        string camera6 = "";
+        string IO_backoff = "";
+        string IO_turnleft = "";
+        string IO_turnright = "";
+        string IO_alarmIn1 = "";
+        string IO_alarmIn2 = "";
+        string IO_alarmIn4 = "";
+
+        public void setnull()
+        {
+            temperature = "";
+            codec1 = "";
+            gsensorX = "";
+            gsensorY = "";
+            gsensorZ = "";
+            SD = "";
+            udisk = "";
+            MES_lock = "";
+            alarm_led = "";
+            rec_led = "";
+            sd1_led = "";
+            sd2_led = "";
+            SIM_status = "";
+            dial = "";
+            gps = "";
+            wifi = "";
+            camera1 = "";
+            camera2 = "";
+            camera3 = "";
+            camera4 = "";
+            camera5 = "";
+            camera6 = "";
+            IO_backoff = "";
+            IO_turnleft = "";
+            IO_turnright = "";
+            IO_alarmIn1 = "";
+            IO_alarmIn2 = "";
+            IO_alarmIn4 = "";
+        }
         //获取测试结果
         public bool getresult()
         {
@@ -306,6 +338,8 @@ namespace _17805
                 labelTips.Text = "请先进行测试!";
                 return false;
             }
+
+            parse_params(result, "temperature", temperature);
             parse_params(result, "codec1", codec1);
             parse_params(result, "gsensorX", gsensorX);
             parse_params(result, "gsensorY", gsensorY);
@@ -340,6 +374,17 @@ namespace _17805
         public void Collecting_Errors(out string ErrCode)
         {
             ErrCode = "";
+            if (temperature == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "temperature";
+                }
+                else
+                {
+                    ErrCode += ",temperature";
+                }
+            }
             if (codec1 == "FAIL")
             {
                 if (ErrCode == "")
@@ -649,6 +694,9 @@ namespace _17805
             int time;
             string Result;
             string ErrCode = "";
+
+            //将变量设置为空
+            setnull();
 
             bool b = getresult();
             if(!b)
