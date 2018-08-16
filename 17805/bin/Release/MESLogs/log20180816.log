@@ -1,0 +1,42 @@
+[Header]
+[Footer]
+[Header]
+[7924] INFO ****** Open Connection
+[7924] INFO ****** Start: 2018/08/16 13:57:08.103, End: 2018/08/16 13:57:09.214, Cost: 1111.000
+[7924] INFO 
+[7924] INFO ****** Execute SQL
+[7924] INFO ****** Text : SELECT mdate,segcode,shifttypecode,reworkroutecode,computerip,muser,dctcode,computermac,computername,crewcode,orgid,mtime,eattribute1,reworkcode,rescode,resdesc,resgroup,restype,jigcontrol,sscode FROM TBLRES WHERE rescode='BZ02-N'
+[7924] INFO ****** Start: 2018/08/16 13:57:09.297, End: 2018/08/16 13:57:09.310, Cost: 13.000
+[7924] INFO 
+[7924] INFO ****** Execute SQL
+[7924] INFO ****** Text : SELECT orgid,orgdesc,mdate,mtime,muser FROM TBLORG WHERE orgid='1'
+[7924] INFO ****** Start: 2018/08/16 13:57:09.314, End: 2018/08/16 13:57:09.335, Cost: 21.000
+[7924] INFO 
+[7924] INFO ****** Execute SQL
+[7924] INFO ****** Text : select opcode, mdate, mtime, resseq, eattribute1, muser, rescode from TBLop2RES where RESCODE ='BZ02-N'
+[7924] INFO ****** Start: 2018/08/16 13:57:09.417, End: 2018/08/16 13:57:09.461, Cost: 44.000
+[7924] INFO 
+[7924] INFO ****** Execute SQL
+[7924] INFO ****** Text : SELECT * FROM tblSimulationReport WHERE RCard='32444444444' ORDER BY MDate DESC,MTime DESC 
+[7924] INFO ****** Start: 2018/08/16 13:57:09.469, End: 2018/08/16 13:57:09.490, Cost: 21.000
+[7924] INFO 
+[7924] INFO ****** Execute SQL
+[7924] INFO ****** Text :  select  distinct GetTSN('32444444444','') scard from dual 
+[7924] INFO ****** Start: 2018/08/16 13:57:09.493, End: 2018/08/16 13:57:09.637, Cost: 144.000
+[7924] INFO 
+[7924] INFO ****** Execute SQL
+[7924] INFO ****** Text : SELECT * FROM tblSimulationReport WHERE RCard='32444444444' ORDER BY MDate DESC,MTime DESC 
+[7924] INFO ****** Start: 2018/08/16 13:57:09.640, End: 2018/08/16 13:57:09.649, Cost: 9.000
+[7924] INFO 
+[7924] INFO ****** Execute SQL
+[7924] INFO ****** Text :  SELECT   imei1, mdate, sn, imei2, cdate, id2, id5, muser, netcode, meid, id3, mtime, ctime, cuser, mocode, psn, eattribute1, tsn, id4, status, id1, serial  FROM  Tblmo2imei  WHERE  1=1   AND   Tsn='32444444444'   ORDER  BY  MDATE DESC,MTIME DESC 
+[7924] INFO ****** Start: 2018/08/16 13:57:09.654, End: 2018/08/16 13:57:09.665, Cost: 11.000
+[7924] INFO 
+[7924] INFO ****** Execute SQL
+[7924] INFO ****** Text : select mocode, itemcode, scard, cartoncode, scardseq, routecode, laction, modelcode, actionlist, rescode, moseq, rmabillcode, ishold, ngtimes, rcard, mtime, rcardseq, fromop, palletcode, fromroute, productstatus, muser, shelfno, eattribute1, tcard, lotno, iscom, tcardseq, idmergerule, opcode, eattribute2, mdate from tblsimulation where 					(rcard,mocode) in ( 					select rcard, mocode 					from (select rcard, mocode 							from TBLSIMULATION 							where RCARD = '32444444444' 							order by MDATE desc, MTIME desc) 							where rownum = 1)
+[7924] INFO ****** Start: 2018/08/16 13:57:09.673, End: 2018/08/16 13:57:09.689, Cost: 16.000
+[7924] INFO 
+[7924] INFO ****** Close Connection
+[7924] INFO ****** Start: 2018/08/16 13:57:09.694, End: 2018/08/16 13:57:09.694, Cost: 0.000
+[7924] INFO 
+[Footer]

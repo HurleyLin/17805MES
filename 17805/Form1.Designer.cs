@@ -30,12 +30,12 @@
         {
             this.textBox_Result = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox_ip = new System.Windows.Forms.TextBox();
-            this.textBox_port = new System.Windows.Forms.TextBox();
+            this.textBox_IP = new System.Windows.Forms.TextBox();
+            this.textBox_Port = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox_Sn = new System.Windows.Forms.TextBox();
             this.labelTips = new System.Windows.Forms.Label();
             this.button_Upload = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -60,23 +60,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox_ip
+            // textBox_IP
             // 
-            this.textBox_ip.Enabled = false;
-            this.textBox_ip.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_ip.Location = new System.Drawing.Point(84, 49);
-            this.textBox_ip.Name = "textBox_ip";
-            this.textBox_ip.Size = new System.Drawing.Size(133, 26);
-            this.textBox_ip.TabIndex = 3;
+            this.textBox_IP.Enabled = false;
+            this.textBox_IP.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_IP.Location = new System.Drawing.Point(84, 49);
+            this.textBox_IP.Name = "textBox_IP";
+            this.textBox_IP.Size = new System.Drawing.Size(133, 26);
+            this.textBox_IP.TabIndex = 3;
             // 
-            // textBox_port
+            // textBox_Port
             // 
-            this.textBox_port.Enabled = false;
-            this.textBox_port.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_port.Location = new System.Drawing.Point(108, 94);
-            this.textBox_port.Name = "textBox_port";
-            this.textBox_port.Size = new System.Drawing.Size(109, 26);
-            this.textBox_port.TabIndex = 4;
+            this.textBox_Port.Enabled = false;
+            this.textBox_Port.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_Port.Location = new System.Drawing.Point(108, 94);
+            this.textBox_Port.Name = "textBox_Port";
+            this.textBox_Port.Size = new System.Drawing.Size(109, 26);
+            this.textBox_Port.TabIndex = 4;
             // 
             // label1
             // 
@@ -109,13 +109,13 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "SN:";
             // 
-            // textBox4
+            // textBox_Sn
             // 
-            this.textBox4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox4.Location = new System.Drawing.Point(364, 91);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(144, 26);
-            this.textBox4.TabIndex = 8;
+            this.textBox_Sn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_Sn.Location = new System.Drawing.Point(364, 91);
+            this.textBox_Sn.Name = "textBox_Sn";
+            this.textBox_Sn.Size = new System.Drawing.Size(144, 26);
+            this.textBox_Sn.TabIndex = 8;
             // 
             // labelTips
             // 
@@ -143,12 +143,12 @@
             this.ClientSize = new System.Drawing.Size(936, 537);
             this.Controls.Add(this.button_Upload);
             this.Controls.Add(this.labelTips);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox_Sn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox_port);
-            this.Controls.Add(this.textBox_ip);
+            this.Controls.Add(this.textBox_Port);
+            this.Controls.Add(this.textBox_IP);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox_Result);
             this.Name = "Form1";
@@ -163,12 +163,12 @@
 
         private System.Windows.Forms.TextBox textBox_Result;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox_ip;
-        private System.Windows.Forms.TextBox textBox_port;
+        private System.Windows.Forms.TextBox textBox_IP;
+        private System.Windows.Forms.TextBox textBox_Port;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox_Sn;
         private System.Windows.Forms.Label labelTips;
         private System.Windows.Forms.Button button_Upload;
     }

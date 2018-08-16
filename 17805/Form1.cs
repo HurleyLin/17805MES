@@ -10,8 +10,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Threading;
 using System.Runtime.InteropServices;
-
-//using BenQGuru.eMES.DLLService;
+using BenQGuru.eMES.DLLService;
 
 namespace _17805
 {
@@ -60,12 +59,12 @@ namespace _17805
 
             GetPrivateProfileString("MESS", "IP", null, temp, 1024, filePath);
             IP = temp.ToString();
-            textBox_ip.Text = IP;
+            textBox_IP.Text = IP;
 
             GetPrivateProfileString("MESS", "Port", null, temp, 1024, filePath);
             myPort = temp.ToString();
             imyPort = int.Parse(myPort);
-            textBox_port.Text = myPort;
+            textBox_Port.Text = myPort;
 
             /*
             BenQGuru.eMES.DLLService.MESHelper login = new BenQGuru.eMES.DLLService.MESHelper();
@@ -233,6 +232,7 @@ namespace _17805
             return currentTime;
         }
 
+        static string resulttest;
         //获取结果
         private unsafe void parse_params(string str, string key, string val)
         {
@@ -246,6 +246,8 @@ namespace _17805
             
             //获取所需字符串
             string resultstr = s[1];
+
+            resulttest += s[1] + "\r\n";
 
             //返回结果
             val = resultstr.Remove(0, key.Length + 1);
@@ -296,13 +298,13 @@ namespace _17805
         string IO_alarmIn4 = null;
         
         //获取测试结果
-        public void getresult()
+        public bool getresult()
         {
             string result = textBox_Result.Text;
             if (result == "")
             {
                 labelTips.Text = "请先进行测试!";
-                return;
+                return false;
             }
             parse_params(result, "codec1", codec1);
             parse_params(result, "gsensorX", gsensorX);
@@ -331,10 +333,392 @@ namespace _17805
             parse_params(result, "IO_alarmIn1", IO_alarmIn1);
             parse_params(result, "IO_alarmIn2", IO_alarmIn2);
             parse_params(result, "IO_alarmIn4", IO_alarmIn4);
+
+            return true;
+        }
+
+        public void Collecting_Errors(out string ErrCode)
+        {
+            ErrCode = "";
+            if (codec1 == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "codec1";
+                }
+                else
+                {
+                    ErrCode += ",codec1";
+                }
+            }
+            if (gsensorX == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "gsensorX";
+                }
+                else
+                {
+                    ErrCode += ",gsensorX";
+                }
+            }
+            if (gsensorY == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "gsensorY";
+                }
+                else
+                {
+                    ErrCode += ",gsensorY";
+                }
+            }
+            if (gsensorZ == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "gsensorZ";
+                }
+                else
+                {
+                    ErrCode += ",gsensorZ";
+                }
+            }
+            if (SD == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "SD";
+                }
+                else
+                {
+                    ErrCode += ",SD";
+                }
+            }
+            if (udisk == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "udisk";
+                }
+                else
+                {
+                    ErrCode += ",udisk";
+                }
+            }
+            if (MES_lock == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "MES_lock";
+                }
+                else
+                {
+                    ErrCode += ",MES_lock";
+                }
+            }
+            if (alarm_led == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "alarm_led";
+                }
+                else
+                {
+                    ErrCode += ",alarm_led";
+                }
+            }
+            if (rec_led == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "rec_led";
+                }
+                else
+                {
+                    ErrCode += ",rec_led";
+                }
+            }
+            if (sd1_led == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "sd1_led";
+                }
+                else
+                {
+                    ErrCode += ",sd1_led";
+                }
+            }
+            if (sd2_led == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "sd2_led";
+                }
+                else
+                {
+                    ErrCode += ",sd2_led";
+                }
+            }
+            if (SIM_status == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "SIM_status";
+                }
+                else
+                {
+                    ErrCode += ",SIM_status";
+                }
+            }
+            if (dial == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "dial";
+                }
+                else
+                {
+                    ErrCode += ",dial";
+                }
+            }
+            if (gps == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "gps";
+                }
+                else
+                {
+                    ErrCode += ",gps";
+                }
+            }
+            if (wifi == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "wifi";
+                }
+                else
+                {
+                    ErrCode += ",wifi";
+                }
+            }
+            if (camera1 == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "camera1";
+                }
+                else
+                {
+                    ErrCode += ",camera1";
+                }
+            }
+            if (camera2 == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "camera2";
+                }
+                else
+                {
+                    ErrCode += ",camera2";
+                }
+            }
+            if (camera3 == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "camera3";
+                }
+                else
+                {
+                    ErrCode += ",camera3";
+                }
+            }
+            if (camera4 == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "camera4";
+                }
+                else
+                {
+                    ErrCode += ",camera4";
+                }
+            }
+            if (camera5 == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "camera5";
+                }
+                else
+                {
+                    ErrCode += ",camera5";
+                }
+            }
+            if (camera6 == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "camera6";
+                }
+                else
+                {
+                    ErrCode += ",camera6";
+                }
+            }
+            if (IO_backoff == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "IO_backoff";
+                }
+                else
+                {
+                    ErrCode += ",IO_backoff";
+                }
+            }
+            if (IO_turnleft == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "IO_turnleft";
+                }
+                else
+                {
+                    ErrCode += ",IO_turnleft";
+                }
+            }
+            if (IO_turnright == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "IO_turnright";
+                }
+                else
+                {
+                    ErrCode += ",IO_turnright";
+                }
+            }
+            if (IO_alarmIn1 == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "IO_alarmIn1";
+                }
+                else
+                {
+                    ErrCode += ",IO_alarmIn1";
+                }
+            }
+            if (IO_alarmIn2 == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "IO_alarmIn2";
+                }
+                else
+                {
+                    ErrCode += ",IO_alarmIn2";
+                }
+            }
+            if (IO_alarmIn4 == "FAIL")
+            {
+                if (ErrCode == "")
+                {
+                    ErrCode = "IO_alarmIn4";
+                }
+                else
+                {
+                    ErrCode += ",IO_alarmIn4";
+                }
+            }
+            
         }
         private void button_upload_Click(object sender, EventArgs e)
         {
-            getresult();
+            resulttest = "";
+
+            labelTips.Text = "";
+            string ErrMessage;
+            string SN;
+            int time;
+            string Result;
+            string ErrCode = "";
+
+            bool b = getresult();
+            if(!b)
+            {
+                return;
+            }
+
+            BenQGuru.eMES.DLLService.MESHelper temp = new BenQGuru.eMES.DLLService.MESHelper();
+
+            SN = textBox_Sn.Text;
+            if (SN == "")
+            {
+                labelTips.Text = "请扫描SN!";
+                return;
+            }
+
+            //收集错误码
+            Collecting_Errors(out ErrCode);
+            if (ErrCode == "")
+            {
+                Result = "OK";
+            }
+            else
+            {
+                Result = "NG";
+            }
+            textBox_Result.Text = resulttest;
+            /*
+            if (ISCHECK == "TRUE")
+            {
+                bool Res = temp.CheckRoutePassed(SN, ResCode, out ErrMessage, out time);
+                if (!Res)
+                {
+                    labelTips.Text = "该序列号不属于当前工序\n" + ErrMessage;
+                    textBox_Sn.Text = "";
+                    textBox_Sn.Focus();
+                    return;
+                }
+                else
+                {
+                    if (!temp.SetMobileData(SN, ResCode, User, Result, ErrCode, out ErrMessage))
+                    {
+                        labelTips.Text = "上传失败，请重试!\n" + ErrMessage;
+                    }
+                    else
+                    {
+                        textBox_Result.Text = "";
+                        textBox_Sn.Text = "";
+                        labelTips.Text = "上传成功";
+                        textBox_Sn.Focus();
+                    }
+                }
+            }
+            else
+            {
+                if (!temp.SetMobileData(SN, ResCode, User, Result, ErrCode, out ErrMessage))
+                {
+                    labelTips.Text = "上传失败，请重试!\n" + ErrMessage;
+                }
+                else
+                {
+
+                    textBox_Result.Text = "";
+                    textBox_Sn.Text = "";
+                    labelTips.Text = "上传成功";
+                    textBox_Sn.Focus();
+                }
+            }
+             * */
+
         }
 
     }
