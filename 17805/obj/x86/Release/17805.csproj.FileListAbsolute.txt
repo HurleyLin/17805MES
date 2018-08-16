@@ -27,3 +27,4 @@ C:\Users\Administrator\Desktop\17805\17805\bin\Release\Infragistics2.Win.UltraWi
 C:\Users\Administrator\Desktop\17805\17805\bin\Release\log4net.xml
 C:\Users\Administrator\Desktop\17805\17805\obj\x86\Release\17805.exe
 C:\Users\Administrator\Desktop\17805\17805\obj\x86\Release\17805.pdb
+C:\Users\Administrator\Desktop\17805\17805\obj\x86\Release\17805.csprojResolveAssemblyReference.cache

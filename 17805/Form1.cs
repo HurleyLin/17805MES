@@ -10,6 +10,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Threading;
 using System.Runtime.InteropServices;
+
 //using BenQGuru.eMES.DLLService;
 
 namespace _17805
@@ -95,67 +96,7 @@ namespace _17805
         //private static byte[] result = new byte[1024];
         //private static int imyProt = 65500;   //端口
         
-        static Socket serverSocket;
-        public void server()
-        {
-            //服务器IP地址 
-            //IPAddress ip = IPAddress.Parse("192.168.3.100");
-            IPAddress ip = IPAddress.Parse(IP);
-            serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            serverSocket.Bind(new IPEndPoint(ip, imyPort));  //绑定IP地址：端口 
-            serverSocket.Listen(10);    //设定最多10个排队连接请求
- 
-            Form1 form1 = new Form1();
-           
-            textBox2.Text += "启动监听" + serverSocket.LocalEndPoint.ToString() + "成功"+"\r\n";
-            //通过Clientsoket发送数据 
-            Thread myThread = new Thread(ListenClientConnect);
-            myThread.Start();
-        }
-
-        /// <summary> 
-        /// 监听客户端连接 
-        /// </summary> 
-        private  void ListenClientConnect()
-        {
-            while (true)
-            {
-                Socket clientSocket = serverSocket.Accept();
-                clientSocket.Send(Encoding.ASCII.GetBytes("Server Say Hello"));
-                Thread receiveThread = new Thread(ReceiveMessage);
-                receiveThread.Start(clientSocket);
-            }
-        }
-
-        /// <summary> 
-        /// 接收消息 
-        /// </summary> 
-        /// <param name="clientSocket"></param> 
-         static byte[] result = new byte[1];
-        public  void ReceiveMessage(object clientSocket)
-        {
-            Socket myClientSocket = (Socket)clientSocket;
-            while (true)
-            {
-                try
-                {
-                    //static byte[] result = new byte[300];
-                    //通过clientSocket接收数据 
-                    int receiveNumber = myClientSocket.Receive(result);
-
-                    textBox2.Text += Encoding.ASCII.GetString(result);
-                    //textBox2.Text += "接收客户端:" + myClientSocket.RemoteEndPoint.ToString() + "消息:" + Encoding.ASCII.GetString(result, 0, receiveNumber) + "\r\n";
-                }
-                catch (Exception ex)
-                {
-   
-                    textBox2.Text += ex.Message + "\r\n";
-                    myClientSocket.Shutdown(SocketShutdown.Both);
-                    myClientSocket.Close();
-                    break;
-                }
-            }
-        }
+        static Socket serverSocket; 
 
         string RemoteEndPoint;     //客户端的网络结点
 
@@ -196,7 +137,7 @@ namespace _17805
             threadwatch.Start(); 
   
            //启动线程后,文本框显示相应提示
-           textBox2.AppendText("开始监听客户端传来的信息!" + "\r\n");
+           textBox_Result.AppendText("开始监听客户端传来的信息!" + "\r\n");
         }
 
         private void watchconnecting()
@@ -214,7 +155,7 @@ namespace _17805
                     if (socketwatch != null)
                     {
                         MessageBox.Show("重启软件");
-                        textBox2.AppendText(ex.Message); //提示套接字监听异常   
+                        textBox_Result.AppendText(ex.Message); //提示套接字监听异常   
                     }          
                     break;
                 }
@@ -229,7 +170,7 @@ namespace _17805
 
 
                 RemoteEndPoint = connection.RemoteEndPoint.ToString(); //客户端网络结点号
-                textBox2.AppendText("成功与" + RemoteEndPoint + "客户端建立连接！\t\n");     //显示与客户端连接情况
+                textBox_Result.AppendText("成功与" + RemoteEndPoint + "客户端建立连接！\t\n");     //显示与客户端连接情况
                 dic.Add(RemoteEndPoint, connection);    //添加客户端信息
 
                 //OnlineList_Disp(RemoteEndPoint);    //显示在线客户端
@@ -270,13 +211,13 @@ namespace _17805
                     //textBox2.AppendText(Result);
                     //将发送的字符串信息附加到文本框txtMsg上
                    
-                    textBox2.AppendText(strSRecMsg);
+                    textBox_Result.AppendText(strSRecMsg);
                     
                     //textBox2.AppendText("客户端:" + socketServer.RemoteEndPoint + ",time:" + GetCurrentTime() + "\r\n" + strSRecMsg + "\r\n\n");
                 }
                 catch (Exception ex)
                 {
-                    textBox2.AppendText("客户端" + socketServer.RemoteEndPoint + "已经中断连接" + "\r\n"); //提示套接字监听异常 
+                    textBox_Result.AppendText("客户端" + socketServer.RemoteEndPoint + "已经中断连接" + "\r\n"); //提示套接字监听异常 
                     //listBoxOnlineList.Items.Remove(socketServer.RemoteEndPoint.ToString());//从listbox中移除断开连接的客户端
                     socketServer.Close();//关闭之前accept出来的和客户端进行通信的套接字
                     break;
@@ -292,7 +233,24 @@ namespace _17805
             return currentTime;
         }
 
-        
+        //获取结果
+        private unsafe void parse_params(string str, string key, string val)
+        {
+            //定位key的位置
+            int temp = str.LastIndexOf(key);
+
+            string tempstr = str.Remove(0,temp-1);
+
+            //分割字符串
+            string[] s = tempstr.Split(new char[1]{'\n'});
+            
+            //获取所需字符串
+            string resultstr = s[1];
+
+            //返回结果
+            val = resultstr.Remove(0, key.Length + 1);
+            //labelTips.Text = resultstr;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -307,6 +265,76 @@ namespace _17805
                 socketwatch.Close();
             }
             this.Dispose();
+        }
+
+        string codec1 = null;
+        string gsensorX = null;
+        string gsensorY = null;
+        string gsensorZ = null;
+        string SD = null;
+        string udisk = null;
+        string MES_lock = null;
+        string alarm_led = null;
+        string rec_led = null;
+        string sd1_led = null;
+        string sd2_led = null;
+        string SIM_status = null;
+        string dial = null;
+        string gps = null;
+        string wifi = null;
+        string camera1 = null;
+        string camera2 = null;
+        string camera3 = null;
+        string camera4 = null;
+        string camera5 = null;
+        string camera6 = null;
+        string IO_backoff = null;
+        string IO_turnleft = null;
+        string IO_turnright = null;
+        string IO_alarmIn1 = null;
+        string IO_alarmIn2 = null;
+        string IO_alarmIn4 = null;
+        
+        //获取测试结果
+        public void getresult()
+        {
+            string result = textBox_Result.Text;
+            if (result == "")
+            {
+                labelTips.Text = "请先进行测试!";
+                return;
+            }
+            parse_params(result, "codec1", codec1);
+            parse_params(result, "gsensorX", gsensorX);
+            parse_params(result, "gsensorY", gsensorY);
+            parse_params(result, "gsensorZ", gsensorZ);
+            parse_params(result, "SD", SD);
+            parse_params(result, "udisk", udisk);
+            parse_params(result, "lock", MES_lock);
+            parse_params(result, "alarm_led", alarm_led);
+            parse_params(result, "rec_led", rec_led);
+            parse_params(result, "sd1_led", sd1_led);
+            parse_params(result, "sd2_led", sd2_led);
+            parse_params(result, "SIM_status", SIM_status);
+            parse_params(result, "dial", dial);
+            parse_params(result, "gps", gps);
+            parse_params(result, "wifi", wifi);
+            parse_params(result, "camera1", camera1);
+            parse_params(result, "camera2", camera2);
+            parse_params(result, "camera3", camera3);
+            parse_params(result, "camera4", camera4);
+            parse_params(result, "camera5", camera5);
+            parse_params(result, "camera6", camera6);
+            parse_params(result, "IO_backoff", IO_backoff);
+            parse_params(result, "IO_turnleft", IO_turnleft);
+            parse_params(result, "IO_turnright", IO_turnright);
+            parse_params(result, "IO_alarmIn1", IO_alarmIn1);
+            parse_params(result, "IO_alarmIn2", IO_alarmIn2);
+            parse_params(result, "IO_alarmIn4", IO_alarmIn4);
+        }
+        private void button_upload_Click(object sender, EventArgs e)
+        {
+            getresult();
         }
 
     }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_Result = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox_ip = new System.Windows.Forms.TextBox();
             this.textBox_port = new System.Windows.Forms.TextBox();
@@ -37,21 +37,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.labelTips = new System.Windows.Forms.Label();
+            this.button_Upload = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox2
+            // textBox_Result
             // 
-            this.textBox2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox2.Location = new System.Drawing.Point(48, 151);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(514, 261);
-            this.textBox2.TabIndex = 1;
+            this.textBox_Result.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_Result.Location = new System.Drawing.Point(48, 151);
+            this.textBox_Result.Multiline = true;
+            this.textBox_Result.Name = "textBox_Result";
+            this.textBox_Result.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_Result.Size = new System.Drawing.Size(514, 261);
+            this.textBox_Result.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(251, 461);
+            this.button1.Location = new System.Drawing.Point(142, 456);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -124,11 +125,23 @@
             this.labelTips.Size = new System.Drawing.Size(240, 261);
             this.labelTips.TabIndex = 9;
             // 
+            // button_Upload
+            // 
+            this.button_Upload.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button_Upload.Location = new System.Drawing.Point(364, 456);
+            this.button_Upload.Name = "button_Upload";
+            this.button_Upload.Size = new System.Drawing.Size(100, 40);
+            this.button_Upload.TabIndex = 10;
+            this.button_Upload.Text = "上传";
+            this.button_Upload.UseVisualStyleBackColor = true;
+            this.button_Upload.Click += new System.EventHandler(this.button_upload_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 537);
+            this.Controls.Add(this.button_Upload);
             this.Controls.Add(this.labelTips);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label3);
@@ -137,7 +150,7 @@
             this.Controls.Add(this.textBox_port);
             this.Controls.Add(this.textBox_ip);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox_Result);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -148,7 +161,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_Result;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox_ip;
         private System.Windows.Forms.TextBox textBox_port;
@@ -157,6 +170,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label labelTips;
+        private System.Windows.Forms.Button button_Upload;
     }
 }
 
