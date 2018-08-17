@@ -241,16 +241,21 @@ namespace _17805
             //定位key的位置
             int temp = str.LastIndexOf(key);
 
+            labelTips.Text += temp.ToString()+"\r\t";
             string tempstr;
+            
+             //结果框内无内容会发生错误
             if (temp > 0)
             {
                 tempstr = str.Remove(0, temp - 1);
             }
             else
             {
-                tempstr = str;
+                return;
+                
             }
             
+            //tempstr = str.Remove(0, temp - 1);
 
             //分割字符串
             string[] s = tempstr.Split(new char[1]{'\n'});
@@ -270,7 +275,7 @@ namespace _17805
             serverstart();
            
         }
-
+        
         private void Form1_FormClosing(object sender, EventArgs e)
         {
             if (socketwatch != null)
