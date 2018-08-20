@@ -1,6 +1,6 @@
 ﻿namespace _17805
 {
-    partial class Form1
+    partial class 工厂模式
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(工厂模式));
             this.textBox_Result = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox_IP = new System.Windows.Forms.TextBox();
@@ -136,7 +137,7 @@
             this.button_Upload.UseVisualStyleBackColor = true;
             this.button_Upload.Click += new System.EventHandler(this.button_upload_Click);
             // 
-            // Form1
+            // 工厂模式
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -151,7 +152,8 @@
             this.Controls.Add(this.textBox_IP);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox_Result);
-            this.Name = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "工厂模式";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

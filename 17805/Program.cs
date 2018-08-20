@@ -15,7 +15,7 @@ namespace _17805
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new 工厂模式());
         }
     }
 }

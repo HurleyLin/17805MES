@@ -1,4 +1,3 @@
-C:\Users\Administrator\Desktop\17805\17805\obj\x86\Release\_17805.Form1.resources
 C:\Users\Administrator\Desktop\17805\17805\obj\x86\Release\_17805.Properties.Resources.resources
 C:\Users\Administrator\Desktop\17805\17805\obj\x86\Release\17805.csproj.GenerateResource.Cache
 C:\Users\Administrator\Desktop\17805\17805\bin\Release\17805.exe.config
@@ -45,3 +44,4 @@ C:\Users\Administrator\Desktop\17805\17805\bin\Release\BenQGuru.Palau.Common.dll
 C:\Users\Administrator\Desktop\17805\17805\bin\Release\BenQGuru.Palau.Interface.dll
 C:\Users\Administrator\Desktop\17805\17805\bin\Release\BenQGuru.Palau.XmlManager.dll
 C:\Users\Administrator\Desktop\17805\17805\bin\Release\BenQGuru.eMES.DLLService.xml
+C:\Users\Administrator\Desktop\17805\17805\obj\x86\Release\_17805.工厂模式.resources

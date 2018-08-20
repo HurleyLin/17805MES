@@ -14,7 +14,7 @@ using BenQGuru.eMES.DLLService;
 
 namespace _17805
 {
-    public partial class Form1 : Form
+    public partial class 工厂模式 : Form
     {
         [DllImport("kernel32")]//返回取得字符串缓冲区的长度
         private static extern long GetPrivateProfileString(string section, string key,
@@ -30,7 +30,7 @@ namespace _17805
         bool CheckResult = true;
 
 
-        public Form1()
+        public 工厂模式()
         {
             InitializeComponent();
             //关联closing事件
@@ -312,7 +312,7 @@ namespace _17805
         string IO_turnright = null;
         string IO_alarmIn1 = null;
         string IO_alarmIn2 = null;
-        string IO_alarmIn4 = null;
+        string IO_alarmIn3 = null;
 
         public void setnull()
         {
@@ -343,7 +343,7 @@ namespace _17805
             IO_turnright = "";
             IO_alarmIn1 = "";
             IO_alarmIn2 = "";
-            IO_alarmIn4 = "";
+            IO_alarmIn3 = "";
         }
         //获取测试结果
         public bool getresult()
@@ -382,7 +382,7 @@ namespace _17805
             parse_params(result, "IO_turnright", IO_turnright);
             parse_params(result, "IO_alarmIn1", IO_alarmIn1);
             parse_params(result, "IO_alarmIn2", IO_alarmIn2);
-            parse_params(result, "IO_alarmIn4", IO_alarmIn4);
+            parse_params(result, "IO_alarmIn3", IO_alarmIn3);
 
             return true;
         }
@@ -687,15 +687,15 @@ namespace _17805
                     ErrCode += ",IO_alarmIn2";
                 }
             }
-            if (IO_alarmIn4 == "FAIL")
+            if (IO_alarmIn3 == "FAIL")
             {
                 if (ErrCode == "")
                 {
-                    ErrCode = "IO_alarmIn4";
+                    ErrCode = "IO_alarmIn3";
                 }
                 else
                 {
-                    ErrCode += ",IO_alarmIn4";
+                    ErrCode += ",IO_alarmIn3";
                 }
             }
             
