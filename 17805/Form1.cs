@@ -29,6 +29,7 @@ namespace _17805
         int imyPort;
         bool CheckResult = true;
 
+        static bool loginstatus = false;
 
         public 工厂模式()
         {
@@ -66,20 +67,24 @@ namespace _17805
             imyPort = int.Parse(myPort);
             textBox_Port.Text = myPort;
 
-            /*
+            
             BenQGuru.eMES.DLLService.MESHelper login = new BenQGuru.eMES.DLLService.MESHelper();
             if (!login.CheckUserAndResourcePassed(User, ResCode, PassWork, "", out ErrMessage))
             {
-                labelTips.Text = "登录失败\n" + ErrMessage;
+                labelTips.Text = User+"登录"+ResCode+"失败\n" + ErrMessage;
+                loginstatus = false;
                 labelTips.ForeColor = Color.Red;
             }
             else
             {
-                labelTips.Text = "登录成功";
-                labelTips.ForeColor = Color.Red;
-                //labelTips.ForeCllor = Color.FromArgb(250, 250, 0, 0);
+                labelTips.Text = User + "登录" + ResCode + "成功\n";
+                loginstatus = true;
+                labelTips.ForeColor = Color.Green;
+                
             }
-             * */
+
+            serverstart();
+             
         }
 
         
@@ -91,6 +96,7 @@ namespace _17805
             string ipAddress = ipAddr.ToString();
             textBox1.Text = ipAddress.ToString();
              * */
+            //serverstart();
         }
 
         //private static byte[] result = new byte[1024];
@@ -113,7 +119,7 @@ namespace _17805
  
             //服务端发送信息需要一个IP地址和端口号
             //IPAddress ip = IPAddress.Parse(textBox1.Text.Trim());//获取文本框输入的IP地址
-            IPAddress ip = IPAddress.Parse("192.168.3.100");
+            IPAddress ip = IPAddress.Parse(IP);
  
             //将IP地址和端口号绑定到网络节点point上
             //IPEndPoint point = new IPEndPoint(ip, int.Parse(textBox2.Text.Trim()));//获取文本框上输入的端口号
@@ -152,10 +158,11 @@ namespace _17805
                 }
                 catch (Exception ex)
                 {
-                    if (socketwatch != null)
+                    if (socketwatch == null)
                     {
-                        MessageBox.Show("重启软件");
-                        textBox_Result.AppendText(ex.Message); //提示套接字监听异常   
+                        //MessageBox.Show("重启软件");
+                        textBox_Result.AppendText(ex.Message); //提示套接字监听异常
+                        return;
                     }          
                     break;
                 }
@@ -241,7 +248,7 @@ namespace _17805
             //定位key的位置
             int temp = str.LastIndexOf(key);
 
-            labelTips.Text += temp.ToString()+"\r\t";
+            //labelTips.Text += temp.ToString()+"\r\t";
             string tempstr;
             
              //结果框内无内容会发生错误
@@ -269,15 +276,20 @@ namespace _17805
             val = resultstr.Remove(0, key.Length + 1);
             //labelTips.Text = resultstr;
         }
-
+        /*
         private void button1_Click(object sender, EventArgs e)
         {
             serverstart();
            
         }
+        */
         
         private void Form1_FormClosing(object sender, EventArgs e)
         {
+            string ErrMessage;
+            BenQGuru.eMES.DLLService.MESHelper temp = new BenQGuru.eMES.DLLService.MESHelper();
+            temp.ATELogOut(ResCode,out ErrMessage);
+           
             if (socketwatch != null)
             {
                 socketwatch.Close();
@@ -700,7 +712,8 @@ namespace _17805
             }
             
         }
-        private void button_upload_Click(object sender, EventArgs e)
+
+        private void button_Upload_Click_1(object sender, EventArgs e)
         {
             resulttest = "测试结果：\r\n";
 
@@ -715,11 +728,17 @@ namespace _17805
             setnull();
 
             bool b = getresult();
-            if(!b)
+            if (!b)
             {
                 return;
             }
-            
+
+            if (!loginstatus)
+            {
+                labelTips.Text = "请先登录MESS系统!";
+                labelTips.ForeColor = Color.Red;
+                return;
+            }
 
             BenQGuru.eMES.DLLService.MESHelper temp = new BenQGuru.eMES.DLLService.MESHelper();
 
@@ -727,6 +746,7 @@ namespace _17805
             if (SN == "")
             {
                 labelTips.Text = "请扫描SN!";
+                labelTips.ForeColor = Color.Red;
                 return;
             }
 
@@ -741,7 +761,7 @@ namespace _17805
                 Result = "NG";
             }
             textBox_Result.Text = resulttest;
-            /*
+            
             if (ISCHECK == "TRUE")
             {
                 bool Res = temp.CheckRoutePassed(SN, ResCode, out ErrMessage, out time);
@@ -782,8 +802,7 @@ namespace _17805
                     textBox_Sn.Focus();
                 }
             }
-             * */
-
+             
         }
 
     }

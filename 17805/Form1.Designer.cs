@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(工厂模式));
             this.textBox_Result = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox_IP = new System.Windows.Forms.TextBox();
             this.textBox_Port = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,16 +49,6 @@
             this.textBox_Result.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_Result.Size = new System.Drawing.Size(514, 261);
             this.textBox_Result.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(142, 456);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox_IP
             // 
@@ -129,13 +118,13 @@
             // button_Upload
             // 
             this.button_Upload.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_Upload.Location = new System.Drawing.Point(364, 456);
+            this.button_Upload.Location = new System.Drawing.Point(233, 455);
             this.button_Upload.Name = "button_Upload";
             this.button_Upload.Size = new System.Drawing.Size(100, 40);
             this.button_Upload.TabIndex = 10;
             this.button_Upload.Text = "上传";
             this.button_Upload.UseVisualStyleBackColor = true;
-            this.button_Upload.Click += new System.EventHandler(this.button_upload_Click);
+            this.button_Upload.Click += new System.EventHandler(this.button_Upload_Click_1);
             // 
             // 工厂模式
             // 
@@ -150,7 +139,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_Port);
             this.Controls.Add(this.textBox_IP);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox_Result);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "工厂模式";
@@ -164,7 +152,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox_Result;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox_IP;
         private System.Windows.Forms.TextBox textBox_Port;
         private System.Windows.Forms.Label label1;
