@@ -468,6 +468,7 @@ namespace _17805
                     ErrCode += ",SD";
                 }
             }
+            /*
             if (udisk == "FAIL")
             {
                 if (ErrCode == "")
@@ -479,6 +480,7 @@ namespace _17805
                     ErrCode += ",udisk";
                 }
             }
+             */
             if (MES_lock == "FAIL")
             {
                 if (ErrCode == "")
